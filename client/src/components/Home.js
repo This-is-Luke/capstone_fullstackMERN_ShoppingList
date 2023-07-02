@@ -1,13 +1,12 @@
-import { useNavigate } from 'react-router-dom';
+//home.js is the file that contains the home page
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Home() {
-  const navigate = useNavigate();
-
   return (
     <div>
-      <h1>Welcome</h1>
-      <button onClick={() => navigate('/register')}>Register</button>
-      <button onClick={() => navigate('/login')}>Login</button>
+      <h1>Welcome to Our App</h1>
+      <p>Please <Link to="/login">Login</Link> or <Link to="/register">Register</Link></p>
     </div>
   );
 }

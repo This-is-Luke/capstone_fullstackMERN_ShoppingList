@@ -1,5 +1,6 @@
 //server.js
 const express = require('express');
+const cors = require('cors');
 const dotenv = require('dotenv');
 dotenv.config();
 const mongoose = require('mongoose');
@@ -9,6 +10,8 @@ const path = require('path');
 const app = express();
 const port = process.env.PORT;
 const db = process.env.MONGODB_URI;
+
+app.use(cors());
 
 console.log('Server - Start');
 
