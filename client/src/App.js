@@ -27,9 +27,9 @@ function App() {
         <Route path="/user-list" element={<UserList />} />
         <Route path="/user-add-items" element={<UserAddItems />} />
         <Route path="/admin-view-all-users" element={<AdminViewAllUsers />} />
-        <Route path="/admin-view-user-list" element={<AdminViewUserList />} />
+        <Route path="/admin-view-user-list/:userId" element={<AdminViewUserList />} />
         <Route path="/admin-add-items" element={<AdminAddItems />} />
-        <Route path="/admin-edit-list" element={<AdminEditList />} />
+        <Route path="/admin-edit-list/:userId" element={<AdminEditList />} />
       </Routes>
     </Router>
   );

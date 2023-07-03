@@ -4,13 +4,14 @@ import HeaderNav from './HeaderNav';
 
 function UserList() {
   const [list, setList] = useState([]);
+  const [isFetched, setIsFetched] = useState(false); // New state variable
   const userItem = localStorage.getItem('user');
   const user = userItem && userItem !== 'undefined' ? JSON.parse(userItem) : null;
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!user) return; // Don't fetch list if user is null
-
+    if (!user || isFetched) return; // Don't fetch list if user is null or list has already been fetched
+  
     const fetchList = async () => {
       try {
         const response = await fetch(`http://localhost:3042/api/users/me/shoppinglist`, {
@@ -18,10 +19,11 @@ function UserList() {
             'x-auth-token': localStorage.getItem('token')
           }
         });
-
+  
         if (response.ok) {
           const data = await response.json();
           setList(data.shoppingList.items); // update this line to get the items from the shopping list
+          setIsFetched(true); // Set isFetched to true after fetching the list
         } else {
           console.log('Response not OK:', response);
         }
@@ -29,9 +31,9 @@ function UserList() {
         console.error('Error:', err);
       }
     };
-
+  
     fetchList();
-  }, []); // Empty dependency array to fetch list only once on mount
+  }, [user, isFetched]); // Include user and isFetched in the dependency array
 
   const handleAddItems = () => {
     navigate('/user-add-items'); // Navigate to UserAddItems component
