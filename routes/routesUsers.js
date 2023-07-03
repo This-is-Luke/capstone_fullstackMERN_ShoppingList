@@ -66,14 +66,18 @@ router.post('/auth', async (req, res) => {
 
     console.log('POST /auth - Generating token');
     const token = user.generateAuthToken();
-    res.json({ msg: 'User authenticated and token generated', token });
+
+    // Remove the password from the user object before sending it in the response
+    user = user.toObject();
+    delete user.password;
+
+    res.json({ msg: 'User authenticated and token generated', token, user }); // include user in the response
   } catch (err) {
     console.error('POST /auth - Error:', err.message);
     res.status(500).json({ msg: 'Server error', error: err.message });
   }
   console.log('POST /auth - End');
 });
-
 router.post('/me/shoppinglists', auth, async (req, res) => {
   console.log('POST /me/shoppinglists - Start');
   try {

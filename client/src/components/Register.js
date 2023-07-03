@@ -14,6 +14,7 @@ function Register() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isAdmin, setIsAdmin] = useState(false); // new state for admin checkbox
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -24,14 +25,14 @@ function Register() {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ name, email, password })
+        body: JSON.stringify({ name, email, password, isAdmin }) // include isAdmin in the request body
       });
 
       if (response.ok) {
         const data = await response.json();
         localStorage.setItem('token', data.token);
         localStorage.setItem('user', JSON.stringify(data.user));
-        navigate('/next-page');
+        navigate('/login-thankyou');
       } else {
         console.log('Response not OK:', response);
         const errorData = await response.json();
@@ -49,6 +50,9 @@ function Register() {
         <input type="text" value={name} onChange={e => setName(e.target.value)} placeholder="Name" required />
         <input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="Email" required />
         <input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Password" required />
+        <label>
+          <input type="checkbox" checked={isAdmin} onChange={e => setIsAdmin(e.target.checked)} /> Register as Admin
+        </label>
         <button type="submit">Register</button>
       </form>
     </div>

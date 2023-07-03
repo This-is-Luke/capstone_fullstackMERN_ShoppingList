@@ -29,10 +29,9 @@ function Login() {
 
       if (response.ok) {
         const data = await response.json();
-        console.log('Login.js - Response Data:', data);
         localStorage.setItem('token', data.token);
-        localStorage.setItem('user', JSON.stringify(data.user));
-        navigate('/next-page');
+        localStorage.setItem('user', JSON.stringify(data.user)); // store user in local storage
+        navigate('/login-thankyou');
       } else {
         console.error('Login.js - Error: Response not OK');
         const errorData = await response.text();

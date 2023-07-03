@@ -10,6 +10,7 @@ import AdminViewAllUsers from './components/AdminViewAllUsers';
 import AdminViewUserList from './components/AdminViewUserList';
 import AdminAddItems from './components/AdminAddItems';
 import AdminEditList from './components/AdminEditList';
+import UserHome from './components/UserHome';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/login-thankyou" element={<LoginThankyou />} />
         <Route path="/login" element={<Login />} />
         <Route path="/admin-home" element={<AdminHome />} />
+        <Route path="/user-home" element={<UserHome />} />
         <Route path="/admin-view-all-users" element={<AdminViewAllUsers />} />
         <Route path="/admin-view-user-list" element={<AdminViewUserList />} />
         <Route path="/admin-add-items" element={<AdminAddItems />} />
