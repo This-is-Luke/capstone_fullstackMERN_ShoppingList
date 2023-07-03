@@ -28,9 +28,9 @@ mongoose
 
 // Use Routes
 console.log('Server - Setting up routes');
+app.use('/api/user/me/shoppinglists', require('./routes/routesShoppingList'));
 app.use('/api/users', require('./routes/routesUsers'));
 app.use('/api/admin', require('./routes/routesAdmin'));  // This line has changed
-app.use('/api/user/me/shoppinglists', require('./routes/routesShoppingList'));
 
 // Serve static assets if in production
 if (process.env.NODE_ENV === 'production') {

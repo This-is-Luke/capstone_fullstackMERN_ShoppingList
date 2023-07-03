@@ -30,7 +30,7 @@ function Login() {
       if (response.ok) {
         const data = await response.json();
         localStorage.setItem('token', data.token);
-        localStorage.setItem('user', JSON.stringify(data.user)); // store user in local storage
+        localStorage.setItem('user', JSON.stringify(data.user)); // store only the user ID in local storage
         navigate('/login-thankyou');
       } else {
         console.error('Login.js - Error: Response not OK');

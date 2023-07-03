@@ -36,7 +36,7 @@ router.post('/', auth, async (req, res) => {
 router.get('/', auth, async (req, res) => {
   try {
     console.log('GET / - Start');
-    const shoppingLists = await ShoppingList.find({ user: req.user });
+    const shoppingLists = await ShoppingList.find({ user: req.user.id });
     console.log('GET / - Shopping lists found');
     res.json({ msg: 'Shopping lists found', shoppingLists });
   } catch (err) {
@@ -60,7 +60,7 @@ router.put('/:id', auth, async (req, res) => {
     if (!shoppingList.user) {
       console.error('PUT /:id - Error: Shopping list has no user');
       return res.status(500).json({ msg: 'Server error', error: 'Shopping list has no user' });
-    } else if (shoppingList.user.toString() !== req.user) {
+    } else if (shoppingList.user.toString() !== req.user.id) { // use req.user.id instead of req.user
       console.log('PUT /:id - User not authorized');
       return res.status(401).json({ msg: 'User not authorized', error: 'User not authorized' });
     }
