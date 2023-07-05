@@ -25,7 +25,9 @@ Then run `npm start` to start the app from the root directory.
 to setup the env file, create a file called `.env` in the root directory and add the following:
 
 MONGODB_URI
+
 JWT_SECRET
+
 PORT
 
 ## Usage 
