@@ -29,6 +29,11 @@ mongoose
 	.then(() => console.log(`\nServer - MongoDB Connected!\n`)) // log that MongoDB connected
 	.catch((err) => console.log('Server - MongoDB connection error:', err)); // log the error if MongoDB fails to connect
 
+// Add a route handler for the root route
+app.get('/', (req, res) => {
+	res.send('Server is running');
+});
+
 // Use Routes
 console.log('Server - Setting up routes');
 app.use('/api/user/me/shoppinglists', require('./routes/routesShoppingList')); // use the routes for shopping lists
@@ -47,8 +52,8 @@ if (process.env.NODE_ENV === 'production') {
 	});
 }
 
-// Start the server
-console.log(`Server - Starting on port ${port}`);
-app.listen(port, () => console.log(`Server - Started on port ${port}`));
+// // Start the server
+// console.log(`Server - Starting on port ${port}`);
+// app.listen(port, () => console.log(`Server - Started on port ${port}`));
 
 module.exports = app; // For testing

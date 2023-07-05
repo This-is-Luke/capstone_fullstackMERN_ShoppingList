@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App renders correctly 1`] = `
+<div
+  className="sc-bdDrbm dUqtr"
+>
+  <h1
+    className="sc-hKVryf blHKXT"
+  >
+    Shopping List
+  </h1>
+  <p
+    className="sc-eCQiwC hGNfhM"
+  >
+    <a
+      className="sc-gtcAbF hCjGGE"
+      href="/login"
+      onClick={[Function]}
+    >
+      Login
+    </a>
+     or
+     
+    <a
+      className="sc-dkXrac bzcfDv"
+      href="/register"
+      onClick={[Function]}
+    >
+      Register
+    </a>
+  </p>
+</div>
+`;

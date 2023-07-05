@@ -38,5 +38,9 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:3042"
+  "proxy": "http://localhost:3042",
+  "devDependencies": {
+    "@babel/preset-env": "^7.22.6",
+    "react-test-renderer": "^18.2.0"
+  }
 }

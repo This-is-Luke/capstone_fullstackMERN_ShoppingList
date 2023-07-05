@@ -40,7 +40,9 @@ As this is part of a capstone project for a bootcamp we will not be accepting co
 
 ## Tests
 
-I have set some unit tests for the backend and snapshot tests for the front end. To run the tests, run `npm test` from the root directory.
+I have set some unit tests for the backend and snapshot tests for the front end. 
+To test the backend run `npm test` from the root directory to test the backend. 
+To test the front end run `npm test` from the client directory.
 
 ## License
 
