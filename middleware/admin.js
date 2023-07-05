@@ -1,4 +1,11 @@
-//admin.js is the file that contains the middleware for checking if the user is an admin
+//admin.js 
+
+/*
+This is the middleware that will be used to protect routes that should only be
+accessible to the admin.
+*/
+
+// Middleware for verifying token and role checking
 module.exports = function(req, res, next) {
   console.log('Admin middleware - Start');
   console.log('Admin middleware - isAdmin type:', typeof req.user.isAdmin);
@@ -9,6 +16,6 @@ module.exports = function(req, res, next) {
       return res.status(403).json({ msg: 'Access denied' });
   }
   console.log('Admin middleware - User is an admin');
-  next();
+  next(); // call next() to continue with the next middleware
   console.log('Admin middleware - End');
 };
