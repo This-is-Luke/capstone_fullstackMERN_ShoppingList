@@ -1,4 +1,8 @@
 // UserHome.js
+/*
+This file will be the user home page. It will display a welcome message 
+and a button to view the user's list.
+*/
 import React from 'react';
 import { Link } from 'react-router-dom';
 import HeaderNav from './HeaderNav';
