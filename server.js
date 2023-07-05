@@ -7,6 +7,7 @@ dotenv.config();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const path = require('path');
+const Helmet = require('helmet');
 
 // Create the server
 const app = express(); // initialize express
@@ -15,6 +16,9 @@ const db = process.env.MONGODB_URI; // set database from env file
 
 // CORS Middleware
 app.use(cors());
+
+// Helmet Middleware
+app.use(Helmet());
 
 console.log('Server - Start');
 
