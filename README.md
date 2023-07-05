@@ -18,7 +18,9 @@ In upcomming releases of this software we will be adding the ability to share li
 
 ## Installation
 
-Downlaod the repo and run `npm install` from the root directory. Then run `npm start` to start the app.
+Downlaod the repo and run `npm install` from the root directory. 
+
+Then run `npm start` to start the app from the root directory.
 
 to setup the env file, create a file called `.env` in the root directory and add the following:
 
