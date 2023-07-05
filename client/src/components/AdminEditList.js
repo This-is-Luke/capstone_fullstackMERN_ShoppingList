@@ -6,6 +6,80 @@ This component will be used by the admin to edit the shopping list of a user.
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import HeaderNav from './HeaderNav';
+import Styled from 'styled-components';
+
+// Styled components
+
+const CenteredDiv = Styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  width: 90vw;
+  margin-left: 2.5rem;
+`;
+
+const StyledList = Styled.ul`
+  list-style-type: none;
+  font-size: 1.2rem;
+  overflow: hidden;
+`;
+
+const StyledInput = Styled.input`
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 0.5rem;
+`;
+
+const StyledH1 = Styled.h1`
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+`;
+
+const StyledButtonAdd = Styled.button`
+  background-color: #008CBA;
+  border: none;
+  border-radius: 20px;
+  color: white;
+  padding: 15px 32px;
+  font-size: 1.2rem;
+  margin: 0 1rem;
+  margin-right: 2rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+`;
+
+const StyledButtonSave = Styled.button`
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 20px;
+  color: white;
+  padding: 15px 32px;
+  font-size: 1.2rem;
+  margin: 0 1rem;
+  margin-right: 2rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+`;
+
+const StyledButtonCancel = Styled.button`
+  background-color: #f44336;
+  border: none;
+  border-radius: 20px;
+  color: white;
+  padding: 15px 32px;
+  font-size: 1.2rem;
+  margin: 0 1rem;
+  margin-right: 2rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+`;
+
 
 // main function component for AdminEditList
 function AdminEditList() {
@@ -111,22 +185,22 @@ function AdminEditList() {
 	return (
 		<div>
 			<HeaderNav />
-			<h1>Edit Shopping List</h1>
+      <CenteredDiv>
+			<StyledH1>Edit Shopping List</StyledH1>
 			{editedShoppingList && (
 				<div>
-					<h2>Shopping List</h2>
-					<ul>
+					<StyledList>
 						{editedShoppingList.items.map((item, index) => (
 							<li key={item._id}>
-								<input
+								<StyledInput
 									type="text"
 									value={item.name}
 									onChange={(e) =>
 										handleInputChange(index, 'name', e.target.value)
 									}
 								/>
-								- Quantity:
-								<input
+								{' '} - Quantity - {' '}
+								<StyledInput
 									type="number"
 									value={item.quantity}
 									onChange={(e) =>
@@ -139,12 +213,13 @@ function AdminEditList() {
 								/>
 							</li>
 						))}
-					</ul>
-					<button onClick={handleAddItemClick}>Add Item</button>
-					<button onClick={handleSaveClick}>Save</button>
-					<button onClick={handleCancelClick}>Cancel</button>
+					</StyledList>
+					<StyledButtonAdd onClick={handleAddItemClick}>Add New Item</StyledButtonAdd>
+					<StyledButtonSave onClick={handleSaveClick}>Save</StyledButtonSave>
+					<StyledButtonCancel onClick={handleCancelClick}>Cancel</StyledButtonCancel>
 				</div>
 			)}
+      </CenteredDiv>
 		</div>
 	);
 }

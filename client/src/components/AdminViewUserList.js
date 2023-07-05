@@ -7,6 +7,51 @@ and a button to view a user's shopping list.
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom'; 
 import HeaderNav from './HeaderNav';
+import Styled from 'styled-components';
+
+const CeneteredDiv = Styled.div`
+  text-align: center;
+`;
+
+const StyledButton = Styled.button`
+  background-color: green;
+  border: none;
+  border-radius: 20px;
+  color: white;
+  padding: 15px 32px;
+  margin: 0 1rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.2rem;
+`;
+
+const StyledH1 = Styled.h1`
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  margin-top: 5rem;
+`;
+
+const StyledH2 = Styled.h2`
+  font-size: 2rem;
+`;
+
+const StyledP = Styled.p`
+  font-size: 1.2rem;
+`;
+
+const StyledUl = Styled.ul`
+  list-style-type: none;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  margin-top: 5rem;
+  margin-right: 3rem;
+`;
+
+const StyledLi = Styled.li`
+  font-size: 1.2rem;
+`;
+
 
 // main function component for AdminViewUserList
 function AdminViewUserList() {
@@ -75,30 +120,30 @@ function AdminViewUserList() {
   }
 
   return (
-    <div>
+    <CeneteredDiv>
       <HeaderNav />
-      <h1>User List</h1>
+      <StyledH1>User List</StyledH1>
       {user && (
         <div>
-          <h2>User Details</h2>
-          <p>Name: {user.name}</p>
-          <p>Email: {user.email}</p>
+          <StyledH2>User Details</StyledH2>
+          <StyledP>Name: {user.name}</StyledP>
+          <StyledP>Email: {user.email}</StyledP>
         </div>
       )}
       {shoppingList && (
         <div>
-          <h2>Shopping List</h2>
-          <ul>
+          <StyledH2>Shopping List</StyledH2>
+          <StyledUl>
             {shoppingList.items.map(item => (
-              <li key={item._id}>
+              <StyledLi key={item._id}>
                 {item.name} - Quantity: {item.quantity}
-              </li>
+              </StyledLi>
             ))}
-          </ul>
-          <button onClick={handleEditClick}>Edit List</button>
+          </StyledUl>
+          <StyledButton onClick={handleEditClick}>Edit List</StyledButton>
         </div>
       )}
-    </div>
+    </CeneteredDiv>
   );
 }
 

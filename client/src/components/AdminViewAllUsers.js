@@ -6,6 +6,42 @@ and a button to view a user's shoppin list.
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import HeaderNav from './HeaderNav';
+import Styled from 'styled-components';
+
+const CeneteredDiv = Styled.div`
+  text-align: center;
+`;
+
+const StyledButton = Styled.button`
+  background-color: green;
+  border: none;
+  border-radius: 20px;
+  color: white;
+  padding: 10px 15px;
+  margin: 0 1rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.2rem;
+`;
+
+const StyledH1 = Styled.h1`
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  margin-top: 5rem;
+`;
+
+const StyledUl = Styled.ul`
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+`;
+
+const StyledLi = Styled.li`
+  margin: 1rem 0;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+`;
 
 // main function component for AdminViewAllUsers
 function AdminViewAllUsers() { 
@@ -45,24 +81,24 @@ function AdminViewAllUsers() {
   }
 
   return (
-    <div>
+    <CeneteredDiv>
       <HeaderNav />
-      <h1>All Users</h1>
-      <ul>
+      <StyledH1>All Users</StyledH1>
+      <StyledUl>
         {users.length > 0 ? (
           users.map(user => (
-            <li key={user._id}>
+            <StyledLi key={user._id}>
               {user.name}
               <Link to={`/admin-view-user-list/${user._id}`}>
-                <button>View User's List</button>
+                <StyledButton>View User's List</StyledButton>
               </Link>
-            </li>
+            </StyledLi>
           ))
         ) : (
           <li>Loading Users...</li>
         )}
-      </ul>
-    </div>
+      </StyledUl>
+    </CeneteredDiv>
   );
 }
   

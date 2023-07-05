@@ -5,6 +5,30 @@ This is intended as a head of most of the next components we will create.
 */
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Styled from 'styled-components';
+
+const StyledNav = Styled.nav`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #000;
+  color: #fff;
+  padding: 0 2rem;
+  height: 5rem;
+`;
+
+const StyledH1 = Styled.h1`
+  font-size: 2rem;
+`;
+
+const StyledButton = Styled.button`
+  background-color: red;
+  color: white;
+  font-size: 1.1rem;
+  padding: 0.2rem 1rem;
+  border-radius: 5px;
+  border: 1px solid #000;
+`;
 
 function HeaderNav() {
   const navigate = useNavigate(); // Hook to access the navigation functionality
@@ -25,10 +49,10 @@ function HeaderNav() {
   };
 
   return (
-    <nav>
-      <h1>Hello, {user ? user.name : 'Guest'}</h1>
-      {user && <button onClick={handleSignOut}>Sign Out</button>}
-    </nav>
+    <StyledNav>
+      <StyledH1>Hello, {user ? user.name : 'Guest'}</StyledH1>
+      {user && <StyledButton onClick={handleSignOut}>Sign Out</StyledButton>}
+    </StyledNav>
   );
 }
 

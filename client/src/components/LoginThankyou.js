@@ -6,6 +6,43 @@ link to the admin or user home page.
 */
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import Styled from 'styled-components';
+
+const CenteredDiv = Styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin-top: 5rem;
+`;
+
+const StyledLinkUser = Styled(Link)`
+  text-decoration: none;
+  background-color: blue;
+  color: white;
+  font-weight: bold;
+  font-size: 1.7rem;
+  margin: 0 1rem;
+  border: 1px solid #000;
+  padding: 0.2rem 1rem;
+  padding-bottom: 0.5rem;
+  border-radius: 5px;
+`;
+
+const StyledLinkAdmin = Styled(Link)`
+  text-decoration: none;
+  background-color: green;
+  color: white;
+  font-weight: bold;
+  font-size: 1.7rem;
+  margin: 0 1rem;
+  border: 1px solid #000;
+  padding: 0.2rem 1rem;
+  padding-bottom: 0.5rem;
+  border-radius: 5px;
+`;
+
 
 function LoginThankYou() {
   //variables for user and setUser
@@ -34,14 +71,14 @@ function LoginThankYou() {
   
 
   return (
-    <div>
+    <CenteredDiv>
       <h1>You have been logged in...</h1>
       {user && user.isAdmin ? (
-        <Link to="/admin-home">View Admin Home</Link>
+        <StyledLinkAdmin to="/admin-home">View Admin Home</StyledLinkAdmin>
       ) : (
-        <Link to="/user-home">View User Home</Link>
+        <StyledLinkUser to="/user-home">View User Home</StyledLinkUser>
       )}
-    </div>
+    </CenteredDiv>
   );
 }
 
