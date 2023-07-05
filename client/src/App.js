@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './components/Home';
 import Register from './components/Register';
 import LoginThankyou from './components/LoginThankyou';
-import Login from './components/Login';
+import Login from './components/MainLogin';
 import AdminHome from './components/AdminHome';
 import AdminViewAllUsers from './components/AdminViewAllUsers';
 import AdminViewUserList from './components/AdminViewUserList';

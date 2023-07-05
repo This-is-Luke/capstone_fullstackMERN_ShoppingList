@@ -4,13 +4,13 @@ import HeaderNav from './HeaderNav';
 
 function UserList() {
   const [list, setList] = useState([]);
-  const [isFetched, setIsFetched] = useState(false); // New state variable
+  const [isFetched, setIsFetched] = useState(false);
   const userItem = localStorage.getItem('user');
   const user = userItem && userItem !== 'undefined' ? JSON.parse(userItem) : null;
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!user || isFetched) return; // Don't fetch list if user is null or list has already been fetched
+    if (!user || isFetched) return;
   
     const fetchList = async () => {
       try {
@@ -22,8 +22,8 @@ function UserList() {
   
         if (response.ok) {
           const data = await response.json();
-          setList(data.shoppingList.items); // update this line to get the items from the shopping list
-          setIsFetched(true); // Set isFetched to true after fetching the list
+          setList(data.shoppingList.items);
+          setIsFetched(true);
         } else {
           console.log('Response not OK:', response);
         }
@@ -33,10 +33,10 @@ function UserList() {
     };
   
     fetchList();
-  }, [user, isFetched]); // Include user and isFetched in the dependency array
+  }, [user, isFetched]);
 
   const handleAddItems = () => {
-    navigate('/user-add-items'); // Navigate to UserAddItems component
+    navigate('/user-add-items');
   };
 
   return (
@@ -45,7 +45,7 @@ function UserList() {
       <h1>My List</h1>
       <ul>
         {list.map(item => (
-          <li key={item._id}>{item.name}</li>
+          <li key={item._id}>{item.name} - Quantity: {item.quantity}</li> // Display the quantity
         ))}
       </ul>
       <button onClick={handleAddItems}>Add to My List</button>

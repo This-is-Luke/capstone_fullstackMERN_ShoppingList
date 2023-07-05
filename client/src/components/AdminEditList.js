@@ -65,6 +65,16 @@ function AdminEditList() {
     }
   };
   
+  const handleAddItemClick = () => {
+    // Create a new copy of the edited shopping list
+    const newShoppingList = { ...editedShoppingList };
+
+    // Add a new item to the items array
+    newShoppingList.items.push({ name: '', quantity: 1 });
+
+    // Update the state
+    setEditedShoppingList(newShoppingList);
+  };
 
   const handleCancelClick = () => {
     navigate(`/admin-view-user-list/${userId}`);
@@ -98,6 +108,7 @@ function AdminEditList() {
               </li>
             ))}
           </ul>
+          <button onClick={handleAddItemClick}>Add Item</button> {/* New Add Item button */}
           <button onClick={handleSaveClick}>Save</button>
           <button onClick={handleCancelClick}>Cancel</button>
         </div>
