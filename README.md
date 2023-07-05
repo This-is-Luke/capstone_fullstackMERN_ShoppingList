@@ -52,6 +52,13 @@ To test the front end run `npm test` from the client directory.
 
 This project is licensed under the MIT License 
 
+## Upcoming updates
+
+The following updates are planned for the next release:
+    Adding ability to share lists with other users
+    Adding ability to check off items as they are purchased
+    Adding the ability to delete items from lists from the admin section
+
 ## Technologies Used
 
 - MongoDB
