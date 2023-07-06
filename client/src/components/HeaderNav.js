@@ -28,6 +28,10 @@ const StyledButton = Styled.button`
   padding: 0.2rem 1rem;
   border-radius: 5px;
   border: 1px solid #000;
+  &:hover {
+    cursor: pointer;
+      }
+   
 `;
 
 function HeaderNav() {

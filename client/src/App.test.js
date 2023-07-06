@@ -5,7 +5,7 @@ import App from './App';
 import Login from './components/Login';
 import { useNavigate } from 'react-router-dom';
 
-// Existing test
+
 test('App renders correctly', () => {
   const tree = renderer
     .create(<App />)

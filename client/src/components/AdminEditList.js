@@ -50,6 +50,10 @@ const StyledButtonAdd = Styled.button`
   text-align: center;
   text-decoration: none;
   display: inline-block;
+  &:hover {
+	cursor: pointer;
+	  }
+
 `;
 
 const StyledButtonSave = Styled.button`
@@ -64,6 +68,10 @@ const StyledButtonSave = Styled.button`
   text-align: center;
   text-decoration: none;
   display: inline-block;
+  &:hover {
+	cursor: pointer;
+	  }
+
 `;
 
 const StyledButtonCancel = Styled.button`
@@ -78,6 +86,10 @@ const StyledButtonCancel = Styled.button`
   text-align: center;
   text-decoration: none;
   display: inline-block;
+  &:hover {
+	cursor: pointer;
+	  }
+
 `;
 
 

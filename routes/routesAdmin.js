@@ -116,5 +116,36 @@ router.get('/users/:id', auth, admin, async (req, res) => {
 
 //--------------------------------------------------------------------------------------------------
 
+// @route   DELETE api/admin/shoppinglist/:listId/:itemId
+// @desc    Delete an item from the shopping list
+// @access  Admin
+router.delete('/shoppinglist/:listId/:itemId', auth, admin, async (req, res) => {
+	try {
+	  // try to find the shopping list
+	  const shoppingListId = req.params.listId; // get the shopping list id from the request parameters
+	  const itemId = req.params.itemId; // get the item id from the request parameters
+	  const shoppingList = await ShoppingList.findById(shoppingListId); // find the shopping list by the id
+  
+	  // If the shopping list doesn't exist
+	  if (!shoppingList) {
+		return res.status(404).json({ msg: 'Shopping list not found' }); // return a 404 not found
+	  }
+  
+	  // Filter out the item to be removed
+	  shoppingList.items = shoppingList.items.filter((item) => item._id.toString() !== itemId);
+  
+	  // Save the updated shopping list
+	  await shoppingList.save();
+  
+	  // Return the updated shopping list
+	  res.json(shoppingList);
+	} catch (err) {
+	  // error handling
+	  console.error(err.message);
+	  res.status(500).send('Server error'); // server error
+	}
+  });
+  
+
 // export the router
 module.exports = router;
